@@ -3,6 +3,7 @@
 [![CI](https://github.com/Sayma-Sf/demand-drift-monitor/actions/workflows/ci.yml/badge.svg)](https://github.com/Sayma-Sf/demand-drift-monitor/actions/workflows/ci.yml)
 ![Python 3.11](https://img.shields.io/badge/python-3.11-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://demand-drift-monitor.streamlit.app)
 
 **A demand forecast left running for two years, and the monitor that catches it going stale.**
 An XGBoost model trained on 2013–2015 sales forecasts 500 store-item series month by month through
@@ -10,7 +11,10 @@ An XGBoost model trained on 2013–2015 sales forecasts 500 store-item series mo
 compares the month with the model's training data. Every model version writes a lineage manifest,
 so any forecast can be traced to the exact rows it was trained on.
 
-**Live demo:** _add the Streamlit Community Cloud link here after deploying (see [Deploy the demo](#deploy-the-demo))._
+**Live demo: [demand-drift-monitor.streamlit.app](https://demand-drift-monitor.streamlit.app)**.
+Switch between retraining strategies, compare the naive and seasonal drift checks, and trace any
+forecast from the two production years to the model version and training data behind it. (On the
+free tier the app sleeps when idle; if you see "get this app back up", it wakes in under a minute.)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="reports/figures/drift_timeline_dark.png">
