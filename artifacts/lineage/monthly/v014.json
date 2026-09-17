@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "model_version": "v014",
+  "strategy": "monthly",
+  "trigger": {
+    "type": "schedule",
+    "month": "2017-01"
+  },
+  "training_data": {
+    "source_file": "data/train.csv",
+    "source_sha256": "038f25690a65149c94f86ddd3deceda20c037a5cfd754cafdfc539a72992f2ed",
+    "date_from": "2013-01-01",
+    "date_to": "2017-01-31",
+    "rows": 746000,
+    "series": 500,
+    "snapshot_sha256": "6ab762a9f5c94e0b5059e4f0b9a85cf964e73d343f3f6cf27b1cae33d9595758",
+    "snapshot_definition": "sha256 of int64 [days since epoch, store, item, sales] rows sorted by date, store, item"
+  },
+  "model": {
+    "type": "xgboost.XGBRegressor",
+    "features": [
+      "store",
+      "item",
+      "dayofweek",
+      "month",
+      "dayofyear",
+      "year"
+    ],
+    "hyperparameters": {
+      "n_estimators": 500,
+      "learning_rate": 0.05,
+      "max_depth": 8,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "tree_method": "hist",
+      "objective": "reg:squarederror",
+      "random_state": 42
+    },
+    "file": "artifacts/models/monthly/v014.ubj",
+    "file_sha256": "21a58e7ecca12882f1c70a087284cfd915324d2a0cb5fa108c326ce6b5249071"
+  },
+  "code_sha256": "c071aa8d79ff584867a917b99c31b90135a4135dbe3807507d8825999407cc03",
+  "library_versions": {
+    "xgboost": "3.2.0",
+    "evidently": "0.7.23",
+    "pandas": "2.3.3",
+    "numpy": "2.2.6"
+  },
+  "built_at_utc": "2026-09-17T10:35:25+00:00",
+  "served": {
+    "from": "2017-02-01",
+    "to": "2017-02-28"
+  }
+}

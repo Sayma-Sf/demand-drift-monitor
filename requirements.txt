@@ -1,0 +1,8 @@
+# Runtime for the Streamlit dashboard (what Streamlit Community Cloud installs).
+# It reads results/ and artifacts/lineage/, so it needs no XGBoost, Evidently or data.
+# To rerun the replay or the tests, install requirements-pipeline.txt instead.
+streamlit==1.64.0
+altair==6.3.0
+pandas==2.3.3
+numpy==2.2.6
+pyarrow==19.0.1

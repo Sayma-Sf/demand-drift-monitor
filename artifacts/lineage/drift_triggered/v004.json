@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "model_version": "v004",
+  "strategy": "drift_triggered",
+  "trigger": {
+    "type": "drift",
+    "month": "2016-03",
+    "column": "sales",
+    "method": "wasserstein",
+    "score": 0.1629,
+    "threshold": 0.1,
+    "reference_month": "2015-03"
+  },
+  "training_data": {
+    "source_file": "data/train.csv",
+    "source_sha256": "038f25690a65149c94f86ddd3deceda20c037a5cfd754cafdfc539a72992f2ed",
+    "date_from": "2013-01-01",
+    "date_to": "2016-03-31",
+    "rows": 593000,
+    "series": 500,
+    "snapshot_sha256": "9b26ca033171e6c5f930a319cf6134823ebe1254ccc10c2dc2474285951075e2",
+    "snapshot_definition": "sha256 of int64 [days since epoch, store, item, sales] rows sorted by date, store, item"
+  },
+  "model": {
+    "type": "xgboost.XGBRegressor",
+    "features": [
+      "store",
+      "item",
+      "dayofweek",
+      "month",
+      "dayofyear",
+      "year"
+    ],
+    "hyperparameters": {
+      "n_estimators": 500,
+      "learning_rate": 0.05,
+      "max_depth": 8,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "tree_method": "hist",
+      "objective": "reg:squarederror",
+      "random_state": 42
+    },
+    "file": "artifacts/models/drift_triggered/v004.ubj",
+    "file_sha256": "2118b9eb380fce289fca28ff5880b98cb679cfccdd58479052f20d21b0cafe58"
+  },
+  "code_sha256": "c071aa8d79ff584867a917b99c31b90135a4135dbe3807507d8825999407cc03",
+  "library_versions": {
+    "xgboost": "3.2.0",
+    "evidently": "0.7.23",
+    "pandas": "2.3.3",
+    "numpy": "2.2.6"
+  },
+  "built_at_utc": "2026-09-17T10:28:51+00:00",
+  "served": {
+    "from": "2016-04-01",
+    "to": "2016-04-30"
+  }
+}

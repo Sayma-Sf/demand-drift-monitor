@@ -1,0 +1,154 @@
+{
+  "generated_at": "2026-09-17T10:42:16+00:00",
+  "config": {
+    "quick": false,
+    "train_start": "2013-01-01",
+    "production": [
+      "2016-01-01",
+      "2017-12-31"
+    ],
+    "strategies": [
+      "static",
+      "drift_triggered",
+      "monthly"
+    ],
+    "drift_method": "wasserstein",
+    "drift_threshold": 0.1,
+    "xgb_params": {
+      "n_estimators": 500,
+      "learning_rate": 0.05,
+      "max_depth": 8,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "tree_method": "hist",
+      "objective": "reg:squarederror"
+    }
+  },
+  "data": {
+    "rows": 913000,
+    "stores": 10,
+    "items": 50,
+    "yearly_mean_sales": {
+      "2013": 43.514,
+      "2014": 50.057,
+      "2015": 52.257,
+      "2016": 56.597,
+      "2017": 58.815
+    },
+    "source_sha256": "038f25690a65149c94f86ddd3deceda20c037a5cfd754cafdfc539a72992f2ed"
+  },
+  "summary": {
+    "static": {
+      "months": 24,
+      "smape_mean": 14.635,
+      "bias_pct_mean": -9.426,
+      "abs_bias_pct_mean": 9.426,
+      "by_year": {
+        "2016": {
+          "smape_mean": 13.825,
+          "bias_pct_mean": -7.701
+        },
+        "2017": {
+          "smape_mean": 15.445,
+          "bias_pct_mean": -11.151
+        }
+      },
+      "months_seasonal_sales_drift": 24,
+      "months_seasonal_prediction_drift": 0,
+      "model_versions": 1,
+      "months_naive_sales_drift": 24
+    },
+    "drift_triggered": {
+      "months": 24,
+      "smape_mean": 12.761,
+      "bias_pct_mean": -3.541,
+      "abs_bias_pct_mean": 4.477,
+      "by_year": {
+        "2016": {
+          "smape_mean": 13.12,
+          "bias_pct_mean": -3.277
+        },
+        "2017": {
+          "smape_mean": 12.403,
+          "bias_pct_mean": -3.805
+        }
+      },
+      "months_seasonal_sales_drift": 12,
+      "months_seasonal_prediction_drift": 4,
+      "model_versions": 13,
+      "months_naive_sales_drift": 24
+    },
+    "monthly": {
+      "months": 24,
+      "smape_mean": 12.714,
+      "bias_pct_mean": -2.567,
+      "abs_bias_pct_mean": 3.992,
+      "by_year": {
+        "2016": {
+          "smape_mean": 13.12,
+          "bias_pct_mean": -3.277
+        },
+        "2017": {
+          "smape_mean": 12.309,
+          "bias_pct_mean": -1.856
+        }
+      },
+      "months_seasonal_sales_drift": 12,
+      "months_seasonal_prediction_drift": 6,
+      "model_versions": 24,
+      "months_naive_sales_drift": 24
+    },
+    "static_with_recent_sales": {
+      "months": 24,
+      "smape_mean": 12.121,
+      "bias_pct_mean": 0.21,
+      "abs_bias_pct_mean": 0.757,
+      "by_year": {
+        "2016": {
+          "smape_mean": 12.183,
+          "bias_pct_mean": -0.304
+        },
+        "2017": {
+          "smape_mean": 12.06,
+          "bias_pct_mean": 0.723
+        }
+      },
+      "months_seasonal_sales_drift": 24,
+      "months_seasonal_prediction_drift": 24
+    }
+  },
+  "trace_example": {
+    "strategy": "drift_triggered",
+    "date": "2017-03-14",
+    "store": 3,
+    "item": 17,
+    "prediction": 34.39,
+    "logged_model_version": "v013",
+    "manifest_model_version": "v013",
+    "training_window": [
+      "2013-01-01",
+      "2016-12-31"
+    ],
+    "trigger": {
+      "type": "drift",
+      "month": "2016-12",
+      "column": "sales",
+      "method": "wasserstein",
+      "score": 0.1823,
+      "threshold": 0.1,
+      "reference_month": "2015-12"
+    },
+    "rows_expected": 730500,
+    "rows_found": 730500,
+    "snapshot_expected": "8e34a0fd7ac9026d7c04975197f34dd62f1abe728e8c425fbf57c56937fc34f7",
+    "snapshot_found": "8e34a0fd7ac9026d7c04975197f34dd62f1abe728e8c425fbf57c56937fc34f7",
+    "verified": true
+  },
+  "versions": {
+    "xgboost": "3.2.0",
+    "evidently": "0.7.23",
+    "pandas": "2.3.3",
+    "streamlit": "1.64.0"
+  },
+  "runtime_seconds": 983.0
+}

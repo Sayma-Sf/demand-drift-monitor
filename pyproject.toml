@@ -1,0 +1,22 @@
+[project]
+name = "demand-drift-monitor"
+version = "0.1.0"
+description = "Catching a demand forecast going stale: monthly drift detection with Evidently and a lineage manifest for every model version"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["venv", "notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::FutureWarning",
+]

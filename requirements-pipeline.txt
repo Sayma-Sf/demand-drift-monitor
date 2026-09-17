@@ -1,0 +1,16 @@
+# Everything needed to download the data, replay production, and run lint + tests.
+#
+# Compiled packages are pinned to widely used releases that load with Windows Smart App
+# Control switched on (it blocks brand-new native wheels it hasn't seen often enough).
+-r requirements.txt
+xgboost==3.2.0
+evidently==0.7.23
+scikit-learn==1.6.1
+scipy==1.15.3
+joblib==1.6.0
+matplotlib==3.10.1
+kiwisolver==1.4.8
+fonttools==4.56.0
+kaggle==2.2.4
+pytest==9.1.1
+ruff==0.11.13

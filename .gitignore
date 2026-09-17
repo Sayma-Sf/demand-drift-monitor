@@ -1,0 +1,50 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Test, lint and coverage caches
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets
+.env
+kaggle.json
+access_token
+.streamlit/secrets.toml
+
+# Raw competition data is never committed (download with data/download.py)
+data/*.csv
+data/*.zip
+
+# Trained model files and the full prediction log are rebuilt by the pipeline.
+# The lineage manifests that describe them are committed.
+artifacts/models/
+artifacts/predictions/
+
+# Local smoke-run output (python -m src.pipeline --quick)
+results_quick/
+artifacts_quick/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
